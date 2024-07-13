@@ -1,0 +1,32 @@
+{
+  "name": "playwright-tests",
+  "version": "1.0.0",
+  "description": "Playwright demo project to be used as template",
+  "main": "index.js",
+  "scripts": {
+    "docker-kill": "bash libs/commands.sh kill",
+    "docker-build": "bash libs/commands.sh build",
+    "docker-run": "docker exec playwright-tests npx playwright test -c src/config/local.config.ts",
+    "start": "npx playwright test -c src/config/config.ts",
+    "report_allure": "npx allure generate allure-results --clean  && npx allure open allure-report",
+    "report_playwright": "npx playwright show-report",
+    "updatePlaywright": "npm install -D @playwright/test@latest && npx playwright install --with-deps",
+    "updateProject": "npm install && npx playwright install --with-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidllanos123/technical-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.45.1",
+    "@types/node": "^20.6.5",
+    "allure-playwright": "^2.4.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "dotenv": "^16.3.1"
+  }
+}
