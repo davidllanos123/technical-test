@@ -40,6 +40,17 @@ export abstract class ApiUtil {
         }
     }
 
+    protected async patch(path: string, headers: {}, body: {}, bodyType: BodyType= BodyType.data): Promise<formattedResponse>{
+        let response: APIResponse
+        if (bodyType == BodyType.data) {
+            response = await this.requestContext.patch(path, {headers: headers, data: body})
+            return await this.parseResponse(response);
+        } else {
+            response = await this.requestContext.patch(path, {headers: headers, form: body})
+            return await this.parseResponse(response);
+        }
+    }
+
     protected async get(path: string, headers: {}): Promise<formattedResponse>{
         let response: APIResponse
         response = await this.requestContext.get(path, {headers: headers})
