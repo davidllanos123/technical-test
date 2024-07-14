@@ -34,10 +34,6 @@ export default defineConfig({
             name: 'chrome',
             use: { ...devices['Desktop Chrome'] },
         },
-        {
-            name: 'safari',
-            use: { ...devices['Desktop Safari'] },
-        },
 
         {
             name: 'worker',

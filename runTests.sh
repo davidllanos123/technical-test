@@ -37,9 +37,6 @@ if [[ ! -z $tag ]]; then
   echo -e "$BOLD   · Test filter:$BLUE $tag $ENDC $ENDC"
 fi
 
-echo "TAG: $tag"
-echo "FILTER: $filter"
-
 npx playwright test -c src/config/config.ts $filter
 
 end_time=$(date "+%s")

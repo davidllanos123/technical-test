@@ -1,4 +1,4 @@
-import { test } from "../helpers/APITestsFixtures"
+import {test} from "../helpers/APITestsFixtures"
 import {statusCode} from "../../../common/types/apiTypes";
 import RandomBooking from "../../../common/utils/RandomBooking";
 
@@ -22,11 +22,12 @@ test.describe( "BOOKER API Tests about Creation of booking", ()=>{
     });
 
     test('Create a Booking with a missing field', {
-            tag: ['@api', '@create']},
+            tag: ['@api', '@bad-create']},
         async ({ apiSteps, verifications }) => {
             let booking_1= new RandomBooking();
 
-            const createBookingResponse = await apiSteps.whenCreatingBooking(delete booking_1["firstname"]);
+            delete booking_1["firstname"];
+            const createBookingResponse = await apiSteps.whenCreatingBooking(booking_1);
             await verifications.thenStatusCodeToBeEqual(createBookingResponse,statusCode.BAD_REQUEST);
         });
 });
@@ -70,7 +71,7 @@ test.describe( "BOOKER API Tests about Update of booking", ()=>{
             await verifications.thenStatusCodeToBeEqual(updateBookingResponse,statusCode.OK);
             const getBookingResponse = await apiSteps.thenBookingShouldBeStored(bookingId);
             await verifications.thenStatusCodeToBeEqual(getBookingResponse,statusCode.OK);
-            await verifications.thenResponseTextToContainsArrayOfStrings(getBookingResponse,newFirstName);
+            await verifications.thenResponseTextToContainsArrayOfStrings(getBookingResponse,[newFirstName]);
         });
 });
 

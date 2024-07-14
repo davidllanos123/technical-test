@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 class RandomBooking {
-    firstname: string;
+    firstname?: string;
     lastname: string;
     totalprice: number;
     depositpaid: boolean;

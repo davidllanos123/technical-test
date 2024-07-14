@@ -7,6 +7,7 @@
     "docker-kill": "bash libs/commands.sh kill",
     "docker-build": "bash libs/commands.sh build",
     "docker-run": "docker exec playwright-tests npx playwright test -c src/config/local.config.ts",
+    "build": "tsc",
     "start": "npx playwright test -c src/config/config.ts",
     "report_allure": "npx allure generate allure-results --clean  && npx allure open allure-report",
     "report_playwright": "npx playwright show-report",
@@ -23,7 +24,8 @@
   "devDependencies": {
     "@playwright/test": "^1.45.1",
     "@types/node": "^20.6.5",
-    "allure-playwright": "^2.4.0"
+    "allure-playwright": "^2.4.0",
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
