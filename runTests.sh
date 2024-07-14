@@ -19,18 +19,6 @@ while getopts t: flag; do
     esac
 done
 
-calculate_time_difference() {
-    timestamp1="$1"
-    timestamp2="$2"
-    difference=$((timestamp2 - timestamp1))
-
-    hours=$((difference / 3600))
-    minutes=$(( (difference % 3600) / 60 ))
-    seconds=$((difference % 60 ))
-
-    echo -e "[Execution time]$BLUE ${hours}h:${minutes}m:${seconds}s$ENDC"
-}
-
 [[ ! -z $tag ]] && filter="-g (?=.*@$tag)" || filter=""
 
 if [[ ! -z $tag ]]; then
@@ -38,11 +26,5 @@ if [[ ! -z $tag ]]; then
 fi
 
 npx playwright test -c src/config/config.ts $filter
-
-end_time=$(date "+%s")
-
-calculate_time_difference "$start_time" "$end_time"
-
-
 
 exit 0
