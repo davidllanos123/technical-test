@@ -11,10 +11,10 @@ export abstract class ApiUtil {
 
     private async parseResponse(response: APIResponse): Promise<formattedResponse>{
         try{
-            return {statusCode: response.status(), responseText: JSON.parse(await response.text())}
+            return {statusCode: response.status(), responseBody: JSON.parse(await response.text())}
         }
         catch (e){
-            return { statusCode: response.status(), responseText: ""}
+            return { statusCode: response.status(), responseBody: ""}
         }
     }
 

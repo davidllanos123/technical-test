@@ -1,6 +1,6 @@
 export type formattedResponse = {
     statusCode: number,
-    responseText: any
+    responseBody: any
 }
 
 export enum statusCode {

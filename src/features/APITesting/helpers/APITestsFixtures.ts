@@ -3,15 +3,14 @@ import {test as testBaseFixture} from '../../../common/fixtures/testBaseFixture'
 import {TestBase} from "../../../common/testBase";
 import {APISteps} from "../steps/APISteps";
 import {Verifications} from "../../../common/steps/Verifications";
- 
-
+import UserData from "../../../common/utils/UserData";
 
 type MyFixtures = {
     testBase: TestBase;
     apiSteps: APISteps;
     verifications: Verifications;
+    userData: UserData;
 };
-
 
 export const test = mergeTests(testBaseFixture, base.extend<MyFixtures>({
     apiSteps: async ({ testBase }, use ) => {
@@ -21,5 +20,9 @@ export const test = mergeTests(testBaseFixture, base.extend<MyFixtures>({
     verifications: async ({  }, use ) => {
         const verifications = new Verifications();
         await use(verifications);
+    },
+    userData: async ({  }, use ) => {
+        const userData = new UserData();
+        await use(userData);
     },
 }));
