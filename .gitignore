@@ -1,7 +1,3 @@
 node_modules/
-.idea/
-playwright-report/
-test-results/
-allure-results/
-allure-report/
+.idea
 dist/
